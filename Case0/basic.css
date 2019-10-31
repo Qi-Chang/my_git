@@ -1,5 +1,5 @@
 :root {
-	--back_color: pink; /* Default value */
+	--back_color: red; /* Default value */
 	--heartbeat: 0s; /* Default value */
 }
 
@@ -43,6 +43,9 @@ div.grid2 {
 
 div.grid3 {
 	background-color: blue;
+	animation-name: ani_grid3;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
 }
 
 div.grid4 {
@@ -55,6 +58,18 @@ div.grid4 {
     to {transform: rotate(360deg);}
 }
 
+@keyframes ani_grid3 {
+
+	from {transform: rotate(0deg);}
+    to {transform: rotate(-360deg);}
+
+	0% {background-color: black;}
+	20% {background-color: white;}
+	40% {background-color: yellow;}
+	60% {background-color: white;}
+	80% {background-color: yellow;}
+	100% {background-color: green;}
+}
 @keyframes ani_grid2 {
 	0% {background-color: black;}
 	20% {background-color: green;}
