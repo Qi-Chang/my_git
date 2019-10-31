@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<h1>Get JSON Open Data</h1>
+	<h3>Using XMLHttpRequest()</h3>
+	<div id="data_grid"></div>
+	
+	<script>
+	var xmlhttp = new XMLHttpRequest();
+	var url = "https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=6";
+
+	xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			myFunction(xmlhttp.responseText);
+		}
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+
+	function myFunction(response) {
+		var arr = JSON.parse(response);
+		var i;
+		var out = "<table><tr><th>version</th><th>UID</th><th>titile</th><th>category</th><th>showUnit</th></tr>";
+
+		for(i = 0; i < arr.length; i++) {
+			out += "<tr><td>" +
+			arr[i].version + "</td><td>" +
+			arr[i].UID + "</td><td>" +
+			arr[i].titile + "</td><td>" +
+			arr[i].category + "</td><td>" +
+			arr[i].showUnit + "</td></tr>" 
+			
+		}
+		out += "</table>";
+		document.getElementById("data_grid").innerHTML = out;
+	}
+	</script>
+</body>
+</html>
